@@ -24,7 +24,7 @@ public class homeController {
     }
 
     @RequestMapping("/registerLogic")
-    public String registerEnd(@ModelAttribute("email") String email,@ModelAttribute("name") String name,@ModelAttribute("pass") String pass){
+    public String registerEnd(String email,String name,String pass){
         User user = new User();
         user.setEmail(email);
         user.setUsername(name);
@@ -47,7 +47,7 @@ public class homeController {
     }
 
     @RequestMapping("/loginLogic")
-    public String loginLogic(@ModelAttribute("username") String username, @ModelAttribute("password") String password){
+    public String loginLogic(@ModelAttribute("username") String username, String password){
         try{
             if(repo.loginUser(username, password)){
                 return "final.jsp";
@@ -58,4 +58,13 @@ public class homeController {
         }
     }
 
+    @RequestMapping("/hex")
+    public String hex(){
+        return "ex.jsp";
+    }
+
+    @ModelAttribute("hello")
+    public String getHelloWorld(){
+        return "Hello World!";
+    }
 }
